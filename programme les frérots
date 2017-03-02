@@ -1,0 +1,41 @@
+chaine=list(input("Votre texte="))
+print(chaine)
+nbespace=0
+nbvoyelle=0
+nbpoints=0
+Tablettres=[]
+for i in range (26):
+	Tablettres.append(0)
+for i in range (len(chaine)):
+	if (chaine)[i] in ('a', 'e', 'i', 'o', 'u', 'y'):
+		nbvoyelle = nbvoyelle + 1
+	if (chaine)[i] in (' '):
+		nbespace = nbespace + 1
+	if chaine[i] in ('k', 'w', 'x', 'y', 'z'):
+		nbpoints+=10
+	elif chaine[i] in ('j', 'q'):
+		nbpoints+=8
+	elif chaine[i] in ('f', 'h', 'v'):
+		nbpoints+=4
+	elif chaine[i] in ('b', 'c', 'p'):
+		nbpoints+=3
+	elif chaine[i] in ('d', 'g', 'm'):
+		nbpoints+=2
+	else:
+		nbpoints+=1
+	codeAscii=ord(chaine[i])
+	print("codeAscii=",codeAscii)
+	if codeAscii>=97 and codeAscii<=122:
+		Tablettres[codeAscii-97]+=1
+#recherche du maximum dans le tableau Tablettres
+Maxlettre = -1
+indiceMaxlettre = -1
+for l in range(26):
+	if Tablettres[l] > Maxlettre:
+		Maxlettre = Tablettres[l]
+		indiceMaxlettre=l
+print(Tablettres)
+print("nombre de voyelles =",nbvoyelle)
+print("nombre d'espaces =",nbespace)
+print("nombre de points =",nbpoints)
+print("lettre la plus fréquente:",chr(indiceMaxlettre+97) )
